@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style/background/background.css">
+    <link rel="stylesheet" href="./style/style.css">
+    <title>ToDoDay - Never Forget !</title>
+</head>
+<body>
+    <nav>
+        <ul id="main-menu">
+
+            <li><button type="button" id="calendar">Calendar</button></li>
+            <li><button type="button" id="tasks-list">Tasks list</button></li>
+            <li><button type="button" id="notes">Notes</button></li>
+
+        </ul>
+    </nav>
+<main>
+    <div class="background">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+     </div>
+<div id="calendar-body">
+
+<div class="input form"><strong>Task to do: </strong><form><input type="text" id="usertext" required/></form></div>
+<div class="input date"><strong>When ?:<br></strong><input id="date-btn" type="date" required/></div>
+<div class="input send"><input id="submit-btn" type="submit" value="Add task"></div>
+<div class="input calendar">Ici rajoute un big calendrier :)</div>
+</div>
+<div id="taskslist-body">
+    <h1 id="tasklist-title">Here's what you have to do.</h1>
+    <div id="tasklist-entry"></div>
+</div>
+<div id="notes-body">
+    <h1 id="notes-title">What in your mind today ?</h1>
+    <div id="notes-form-body"><input id="notes-form" type="text"/><input type="submit" value="Add note"/></div>
+    <aside><div id="notes-writter"></div></aside>
+</div>
+</main>
+<script src="./scripts/scripts.js"></script>
+    <footer>
+        <q>
+            People forget how fast you did a job, but they remember how well you did it. -Howard W. Newton
+        </q>
+        <adress>Some advice or anything else ? <a href="souiket.benjamin@gmail.com"></a>Contact me &#9787;</a></adress>
+    </footer>
+</body>
+</html>
