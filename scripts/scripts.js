@@ -1,7 +1,7 @@
 // Avoid the transform at loading ***************************************************************************************************************************************************************
 
 document.addEventListener("DOMContentLoaded", () => {
-    const contentSections = document.querySelectorAll("html");
+    const contentSections = document.querySelectorAll("calendar-body, #taskslist-body, #notes-body");
     contentSections.forEach(section => {
         section.style.visbility = "visible";
     })
