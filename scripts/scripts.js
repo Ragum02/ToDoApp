@@ -21,6 +21,7 @@ function hideSection(section) {
 mainMenuBtns.forEach((btn, index) => {
     btn.addEventListener("click", () => {
         mainMenuBtns.forEach(otherBtn => {
+            otherBtn.classList.remove("active");
         });
         btn.classList.add("active");
 
