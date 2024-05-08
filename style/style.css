@@ -6,7 +6,6 @@
 
 html {
   overflow: hidden;
-  visibility: none;
 }
 
 #menu-body {
@@ -73,7 +72,10 @@ html {
   grid-template-columns: 0.6fr 1.4fr;
   grid-template-rows: 0.9fr 1.1fr 1fr;
   gap: 0px 0px;
+  transform: translate(100%, 50%);
   grid-template-areas: "form calendar" "date calendar" "subbtn calendar";
+  opacity: 0;
+  z-index: -2;
 }
 #calendar-body .input {
   padding: 10px;
@@ -224,6 +226,8 @@ html {
   border-radius: 10px;
   height: 50vh;
   width: 50vw;
+  opacity: 0;
+  z-index: -2;
 }
 #taskslist-body #taskslist-title {
   margin-top: 25px;
@@ -241,6 +245,8 @@ html {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  opacity: 0;
+  z-index: -2;
 }
 #notes-body #notes-title {
   margin: 25px 0 25px 0;
