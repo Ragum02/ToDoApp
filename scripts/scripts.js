@@ -1,11 +1,17 @@
-// Avoid the transform at loading ***************************************************************************************************************************************************************
+// Get everything at loading ***************************************************************************************************************************************************************
+
 
 document.addEventListener("DOMContentLoaded", () => {
-    const contentSections = document.querySelectorAll("html");
-    contentSections.forEach(section => {
-        section.style.visbility = "visible";
-    })
-})
+    const loadTasks = () => {
+        const taskData = JSON.parse(localStorage.getItem("data")) || [];
+        updateTaskContainer(taskData);
+        updateTaskListButton(taskData.length);
+    };
+
+    loadTasks();
+    const menuBody = document.getElementById("menu-body")
+    menuBody.style.visibility = "visible";
+    });
 
 //Main menu ****************************************************************************************************************************************************************************
 
@@ -96,3 +102,76 @@ prevNextIcon.forEach(icon => {
         calendarRendering();
     })
 })
+
+
+//Tasks *****************************************************************************************************************
+
+const tasksInput = document.getElementById("usertext");
+const addTaskBtn = document.getElementById("submit-btn");
+const dateInput = document.getElementById("date-btn");
+const taskContainer = document.getElementById("taskslist-entry")
+const taskData = JSON.parse(localStorage.getItem("data")) || [];
+let currentTask = {};
+
+
+const addTask = () => {
+    const dataArrIndex = taskData.findIndex((item) => item.id === currentTask.id);
+    const taskObj = {
+        id: `${tasksInput.value.toLowerCase().split(" ").join(" ")}`,
+        date : dateInput.value
+    };
+    if (dataArrIndex === -1) {
+        taskData.unshift(taskObj);
+    } else {
+        taskData[dataArrIndex] = taskObj;
+    }
+
+localStorage.setItem("data", JSON.stringify(taskData));
+updateTaskListButton(taskData.length);
+updateTaskContainer();
+reset();
+};
+
+const updateTaskContainer = () => {
+    taskContainer.innerHTML = "";
+
+    taskData.forEach(({id, date}) => {
+        (taskContainer.innerHTML += `<div class="task" id="${id}">
+        <p><strong>Date:</strong> ${date}</p>
+        <p><strong>${id}</strong></p>
+        <button onclick="deleteTask(this)" type="button" class="btn">X</button>
+        </div>`
+        )
+    }
+);
+};
+
+const updateTaskListButton = (numberOfTasks) => {
+    const taskListButton = document.getElementById("tasks-list");
+    const tasksCount = numberOfTasks === undefined ? 0 : numberOfTasks;
+    taskListButton.innerHTML = `Tasks lists  <br> <center>${tasksCount}`};
+
+const deleteTask = (buttonEl) => {
+    const dataArrIndex = taskData.findIndex((item) => item.id === buttonEl.parentElement.id);
+    buttonEl.parentElement.remove();
+    taskData.splice(dataArrIndex,1);
+    localStorage.setItem("data", JSON.stringify(taskData));
+    updateTaskListButton();
+}
+const reset = () => {
+    tasksInput.value = "";
+    dateInput.value = "";
+    currentTask = {};
+}
+
+addTaskBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    if(tasksInput.value.trim()==='' || dateInput.value.trim() === '') {
+        alert('Please fill out all fields.');
+        return;
+
+    }
+
+    addTask();
+});

@@ -9,6 +9,7 @@ html {
 }
 
 #menu-body {
+  visibility: hidden;
   float: left;
   width: 7vw;
   transition: 0.5s ease-in-out;
@@ -75,7 +76,8 @@ html {
   transform: translate(100%, 50%);
   grid-template-areas: "form calendar" "date calendar" "subbtn calendar";
   opacity: 0;
-  z-index: -2;
+  z-index: -1;
+  transform: translate(200%, 50%);
 }
 #calendar-body .input {
   padding: 10px;
@@ -224,14 +226,29 @@ html {
   color: #40e0d0;
   border: 4px solid rgb(0, 128, 128);
   border-radius: 10px;
+  left: 20%;
   height: 50vh;
-  width: 50vw;
+  width: 30vw;
   opacity: 0;
-  z-index: -2;
+  z-index: -1;
+  transform: translate(200%, 50%);
+  overflow: auto;
+  scroll-behavior: smooth;
 }
 #taskslist-body #taskslist-title {
   margin-top: 25px;
   text-align: center;
+}
+#taskslist-body #taskslist-entry {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  margin: 15px 0 0 10px;
+}
+#taskslist-body #taskslist-entry .task {
+  margin-top: 15px;
 }
 
 #notes-body {
@@ -246,7 +263,8 @@ html {
   flex-direction: column;
   justify-content: space-between;
   opacity: 0;
-  z-index: -2;
+  z-index: -1;
+  transform: translate(200%, 50%);
 }
 #notes-body #notes-title {
   margin: 25px 0 25px 0;
