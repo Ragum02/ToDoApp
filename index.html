@@ -9,13 +9,15 @@
 </head>
 <body>
     <nav>
+        <div id="menu-body">
         <ul id="main-menu">
-
             <li><button type="button" id="calendar">Calendar</button></li>
             <li><button type="button" id="tasks-list">Tasks list</button></li>
             <li><button type="button" id="notes">Notes</button></li>
-
+         
         </ul>
+        <svg class="menubutton" fill="#40e0d0" width="64px" height="64px" viewBox="-1.6 -1.6 19.20 19.20" xmlns="http://www.w3.org/2000/svg" stroke="#40e0d0" stroke-width="0.00016" transform="matrix(1, 0, 0, 1, 0, 0)rotate(0)"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.032"></g><g id="SVGRepo_iconCarrier"> <path d="M4 9h12v2H4V9zM0 0h2v16H0V0zm4 5h12v2H4V5zm0-4h12v2H4V1zm0 12h12v2H4v-2z" fill-rule="evenodd"></path> </g></svg>
+    </div>
     </nav>
 <main>
     <div class="background">
@@ -45,24 +47,45 @@
 <div class="input form"><strong>Task to do: </strong><form><input type="text" id="usertext" required/></form></div>
 <div class="input date"><strong>When ?:<br></strong><input id="date-btn" type="date" required/></div>
 <div class="input send"><input id="submit-btn" type="submit" value="Add task"></div>
-<div class="input calendar">Ici rajoute un big calendrier :)</div>
+<div class="input calendar-container">
+    <header>
+    <p class="current-date"></p>
+    <div class="calendar-symbols">
+        <span id="calendar-prev" class="symbols-round"><</span>
+        <span id="calendar-next" class="symbols-round">></span>
+    </div>
+</header>
+    <div class="main-calendar">
+        <ul class="weeks">
+            <li>Sunday</li>
+            <li>Monday</li>
+            <li>Tuesday</li>
+            <li>Wednesday</li>
+            <li>Thursday</li>
+            <li>Friday</li>
+            <li>Saturday</li>
+        </ul>
+        <ul class="days"></ul>
+    </div>
+</div>
 </div>
 <div id="taskslist-body">
-    <h1 id="tasklist-title">Here's what you have to do.</h1>
-    <div id="tasklist-entry"></div>
+    <h1 id="taskslist-title">Here's what you have to do.</h1>
+    <div id="taskslist-entry"></div>
 </div>
 <div id="notes-body">
     <h1 id="notes-title">What in your mind today ?</h1>
-    <div id="notes-form-body"><input id="notes-form" type="text"/><input type="submit" value="Add note"/></div>
-    <aside><div id="notes-writter"></div></aside>
+    <div id="notes-form-body"><textarea id="notes-form"></textarea><br><input type="submit" value="Add note"/></div>
+    <aside><div id="notes-writter"></div>
+    </aside>
 </div>
 </main>
 <script src="./scripts/scripts.js"></script>
     <footer>
         <q>
             People forget how fast you did a job, but they remember how well you did it. -Howard W. Newton
-        </q>
-        <adress>Some advice or anything else ? <a href="souiket.benjamin@gmail.com"></a>Contact me &#9787;</a></adress>
+        </q><br>
+        <adress>Some advice or anything else ? <a href="mailto:souiket.benjamin@gmail.com">Contact me &#9787;</a></adress>
     </footer>
 </body>
 </html>
