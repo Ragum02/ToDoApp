@@ -354,6 +354,13 @@ animation: shaking 2s infinite;
  }
 }
 
+
+
+.hidden {
+    opacity: 0;
+    transform:translate(100%,50%)
+}
+
 @keyframes shaking {
         0% { transform: rotate(0deg); };
         25% { transform: rotate(3deg); };
