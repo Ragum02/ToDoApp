@@ -21,19 +21,18 @@ function hideSection(section) {
 mainMenuBtns.forEach((btn, index) => {
     btn.addEventListener("click", () => {
         mainMenuBtns.forEach(otherBtn => {
-            otherBtn.classList.remove("active");
         });
         btn.classList.add("active");
 
         contentSections.forEach((section, i) => {
             if (i === index) {
-                section.classList.remove("hidden");
+
                 section.style.transition = "transform 0.7s ease-in-out, opacity 0.5s ease-in-out";
                 section.style.transform = "translate(50%,50%)";
                 section.style.opacity = "1";
                 section.style.zIndex = "1";
             } else {
-                section.classList.add("hidden");
+
                 section.style.transition = "transform 0.7s ease-in-out, opacity 0.5s ease-in-out";
                 section.style.transform = "translate(200%,50%)";
                 section.style.opacity = "0";
