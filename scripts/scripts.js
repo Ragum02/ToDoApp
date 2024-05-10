@@ -7,7 +7,12 @@ document.addEventListener("DOMContentLoaded", () => {
         updateTaskContainer(taskData);
         updateTaskListButton(taskData.length);
     };
-
+    const actualNote = () => {
+        const noteData = JSON.parse(localStorage.getItem("note-data")) || [];
+        updateNoteDisplay(noteData);
+        updateNoteBtn(noteData.length);
+    };
+    actualNote();
     loadTasks();
     const menuBody = document.getElementById("menu-body")
     menuBody.style.visibility = "visible";
@@ -15,8 +20,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 //Main menu ****************************************************************************************************************************************************************************
 
-const mainMenuBtns = document.querySelectorAll("#calendar, #tasks-list, #notes");
-const contentSections = document.querySelectorAll("#calendar-body, #taskslist-body, #notes-body");
+const mainMenuBtns = document.querySelectorAll("#tasks-list, #notes");
+const contentSections = document.querySelectorAll("#taskslist-body, #notes-body");
 
 function hideSection(section) {
     if (!section.classList.contains("active")) {
@@ -66,7 +71,6 @@ const months = ["January", "February", "March", "April", "May", "June", "July", 
 const calendarRendering = () => {
     let firstDayofMonth = new Date (currYear, currMonth, 1).getDate();
     let lastDateofMonth = new Date(currYear, currMonth +1, 0).getDate();
-    let lastDayofMonth = new Date(currYear, currMonth, lastDateofMonth).getDay();
     let lastDateofLastMonth= new Date(currYear, currMonth,0).getDate();
     let liTag= "";
 
@@ -75,14 +79,11 @@ const calendarRendering = () => {
     }
 
     for (let i = 1; i <= lastDateofMonth; i++) {
-        let isToday = i === date.getDate() && currMonth === new Date().getMonth()
-                    && currYear === new Date().getFullYear() ? "active" : "";
-                            liTag += `<li class="${isToday}">${i}</li>`;
+        let isToday = i === date.getDate() && currMonth === new Date().getMonth() && currYear === new Date().getFullYear() ? "active" : "";
+        let monthClass = months[currMonth].toLowerCase();
+        liTag += `<li class="${isToday} ${monthClass}">${i}</li>`;
     }
 
-    for (let i = lastDayofMonth; i < 6; i++) {
-        liTag += `<li class="inactive">${i- lastDayofMonth +1}</li>`
-    }
  currentDate.innerText = `${months[currMonth]} ${currYear}`;
  daysTag.innerHTML = liTag;
 }
@@ -113,7 +114,6 @@ const taskContainer = document.getElementById("taskslist-entry")
 const taskData = JSON.parse(localStorage.getItem("data")) || [];
 let currentTask = {};
 
-
 const addTask = () => {
     const dataArrIndex = taskData.findIndex((item) => item.id === currentTask.id);
     const taskObj = {
@@ -129,6 +129,10 @@ const addTask = () => {
 localStorage.setItem("data", JSON.stringify(taskData));
 updateTaskListButton(taskData.length);
 updateTaskContainer();
+const selectedDate = new Date(); 
+const day = selectedDate.getDate(); 
+const currMonth = selectedDate.getMonth();
+
 reset();
 };
 
@@ -174,4 +178,73 @@ addTaskBtn.addEventListener("click", (e) => {
     }
 
     addTask();
+
+});
+
+// Notes ***********************************************************************************************************************************************
+const noteInput = document.getElementById("notes-form");
+const noteDisplay = document.getElementById("notes-display");
+const noteSubBtn = document.getElementById("notes-sub-btn");
+const noteData = JSON.parse(localStorage.getItem("note-data")) || [];
+let currentNote = {};
+
+const addNote = () => {
+    const dataArrIndex = noteData.findIndex((item) => item.id === currentNote.id);
+    const noteObj = {
+        id: `${noteInput.value.toLowerCase().split(" ").join(" ")}`,
+    };
+    if (dataArrIndex === -1) {
+        noteData.unshift(noteObj);
+    } else {
+       noteData[dataArrIndex] = noteObj;
+    }
+
+localStorage.setItem("note-data", JSON.stringify(noteData));
+updateNoteBtn(noteData.length);
+updateNoteDisplay();
+resetNote();
+};
+
+const updateNoteDisplay = () => {
+    noteDisplay.innerHTML = "";
+
+    noteData.forEach(({id}) => {
+        (noteDisplay.innerHTML += `<div class="note" id="${id}">
+        <p class="note-p">${id}</p>
+        <button onclick="deleteNote(this)" type="button" class="btn">X</button>
+        </div>`
+        )
+    }
+);
+};
+
+const updateNoteBtn = (actualNote) => {
+    const noteButton = document.getElementById("notes");
+    const noteCount = actualNote === undefined ? 0 : actualNote;
+    noteButton.innerHTML = `Notes  <br> <center>${noteCount}`};
+
+const deleteNote = (buttonEl) => {
+    const dataArrIndex = noteData.findIndex((item) => item.id === buttonEl.parentElement.id);
+    buttonEl.parentElement.remove();
+    noteData.splice(dataArrIndex,1);
+    localStorage.setItem("note-data", JSON.stringify(noteData));
+    updateNoteBtn();
+}
+
+const resetNote = () => {
+    noteInput.value = "";
+    currentNote = {};
+}
+
+noteSubBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    if(noteInput.value.trim()==='') {
+        alert('Please fill the note fields.');
+        return;
+
+    }
+
+    addNote();
+
 });

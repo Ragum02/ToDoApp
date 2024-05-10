@@ -11,7 +11,6 @@
     <nav>
         <div id="menu-body">
         <ul id="main-menu">
-            <li><button type="button" id="calendar">Calendar</button></li>
             <li><button type="button" id="tasks-list">Tasks list</button></li>
             <li><button type="button" id="notes">Notes</button></li>
          
@@ -42,42 +41,48 @@
         <span></span>
         <span></span>
      </div>
-<div id="calendar-body">
-<form>
-<div class="input form"><strong>Task to do: </strong><input type="text" id="usertext" required/></div></form>
-<form><div class="input date"><strong>When ?:<br></strong><input id="date-btn" type="date" required/></div></form>
-<form><div class="input send"><input id="submit-btn" type="submit" value="Add task"></div></form>
-<div class="input calendar-container">
-    <header>
-    <p class="current-date"></p>
-    <div class="calendar-symbols">
-        <span id="calendar-prev" class="symbols-round"><</span>
-        <span id="calendar-next" class="symbols-round">></span>
-    </div>
-</header>
-    <div class="main-calendar">
-        <ul class="weeks">
-            <li>Sunday</li>
-            <li>Monday</li>
-            <li>Tuesday</li>
-            <li>Wednesday</li>
-            <li>Thursday</li>
-            <li>Friday</li>
-            <li>Saturday</li>
-        </ul>
-        <ul class="days"></ul>
-    </div>
-</div>
-</div>
-<div id="taskslist-body">
-    <h1 id="taskslist-title">Here's what you have to do.</h1>
+
+
+<div id="taskslist-body">    
+    <h1 id="taskslist-title">Tasks List</h1>
+    <form>
+        <div class="input form"><strong>What ?:</strong><input type="text" id="usertext" required/></div></form>
+        <form><div class="input date"><strong>When ?:<br></strong><input id="date-btn" type="date" required/></div></form>
+        <form><div class="input send"><input id="submit-btn" type="submit" value="Add task"></div></form>
+
     <div id="taskslist-entry"></div>
+
+
+    <aside><div class="calendar-container">
+        <header>
+        <p class="current-date"></p>
+        <div class="calendar-symbols">
+            <span id="calendar-prev" class="symbols-round"><</span>
+            <span id="calendar-next" class="symbols-round">></span>
+        </div>
+    </header>
+        <div class="main-calendar">
+            <ul class="weeks">
+                <li>Sun</li>
+                <li>Mon</li>
+                <li>Tue</li>
+                <li>Wed</li>
+                <li>Thu</li>
+                <li>Fri</li>
+                <li>Sat</li>
+            </ul>
+            <ul class="days"></ul>
+        </div>
+    </div>
+
+    </aside>
 </div>
 <div id="notes-body">
     <h1 id="notes-title">What in your mind today ?</h1>
-    <div id="notes-form-body"><textarea id="notes-form"></textarea><br><input type="submit" value="Add note"/></div>
-    <aside><div id="notes-writter"></div>
+    <div id="notes-form-body"><textarea id="notes-form"></textarea><br><input id="notes-sub-btn" type="submit" value="Add note"/></div>
+    <aside><span class="hor-trait"></span><div id="notes-display"></div>
     </aside>
+    
 </div>
 </main>
 <script src="./scripts/scripts.js"></script>

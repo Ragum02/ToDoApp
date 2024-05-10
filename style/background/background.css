@@ -110,9 +110,9 @@ wweb.dev*/
   color: #707070;
   top: 42%;
   left: 64%;
-  animation-duration: 10s;
+  animation-duration: 35s;
   animation-delay: -147s;
-  transform-origin: 22vw -7vh;
+  transform-origin: 10vw -4vh;
   box-shadow: 16vmin 0 2.7989566893399664vmin currentColor;
 }
 .background span:nth-child(9) {
@@ -164,7 +164,7 @@ wweb.dev*/
   color: #454545;
   top: 68%;
   left: 5%;
-  animation-duration: 17s;
+  animation-duration: 28s;
   animation-delay: -115s;
   transform-origin: 15vw 23vh;
   box-shadow: -16vmin 0 2.896261794653319vmin currentColor;
