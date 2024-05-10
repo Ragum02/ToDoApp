@@ -174,7 +174,7 @@ html {
 #taskslist-body.submit-btn {
   grid-area: subbtn;
 }
-#taskslist-body strong {
+#taskslist-body p {
   font-size: 2rem;
 }
 #taskslist-body input {
