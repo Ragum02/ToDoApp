@@ -39,16 +39,21 @@ mainMenuBtns.forEach((btn, index) => {
         btn.classList.add("active");
 
         contentSections.forEach((section, i) => {
+            
             if (i === index) {
 
                 section.style.transition = "transform 0.7s ease-in-out, opacity 0.5s ease-in-out";
+                if (window.innerWidth > 768) {
                 section.style.transform = "translate(50%,50%)";
+                }
                 section.style.opacity = "1";
                 section.style.zIndex = "1";
             } else {
 
                 section.style.transition = "transform 0.7s ease-in-out, opacity 0.5s ease-in-out";
+                if (window.innerWidth > 768) {
                 section.style.transform = "translate(200%,50%)";
+                }
                 section.style.opacity = "0";
                 section.style.zIndex = "-1";
                 setTimeout(() => {
