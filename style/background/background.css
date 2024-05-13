@@ -12,12 +12,12 @@ wweb.dev*/
 
 .background {
   position: fixed;
-  width: 100vw;
   height: 100vh;
+  width: 100vw;
   top: 0;
   left: 0;
   background: #2b2b2b;
-  overflow: hidden;
+  overflow: hidden ;
   z-index: -1;
 }
 
@@ -213,4 +213,20 @@ wweb.dev*/
   animation-delay: -152s;
   transform-origin: 12vw 8vh;
   box-shadow: -16vmin 0 2.2934813944068324vmin currentColor;
+}
+
+
+@media screen and (max-width: 768px) { 
+  .background {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: #2b2b2b;
+    overflow: hidden ;
+    z-index: -1;
+  }
+  
+
 }

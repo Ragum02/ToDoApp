@@ -2,14 +2,15 @@ $primary-color : rgb(0, 128, 128);
 $secondary-color: #40e0d0;
 $tertiary-color: 	rgb(0, 3, 17);
 $quaternary-color: darkblue;
-
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Sans:ital,wght@0,100..800;1,100..800&display=swap');
 *{
     margin: 0;
     padding: 0;
     list-style-type: none;
+    font-family: "Ubuntu Sans", sans-serif;
 }
 html{
-    overflow: hidden;
+    overflow: hidden ;
 }
 // Left-menu ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #menu-body {
@@ -269,6 +270,19 @@ transform: translate(0%, 50%);
             p{
                 word-wrap: break-word;
             }
+            #deleteTask {
+                float: inline-end;
+                margin-right: 80px;
+                background-color: $primary-color;
+                box-shadow: 0px 0px 5px 1px $secondary-color;
+                width: 25px;
+                height: 25px;
+                border-radius: 50%;
+                cursor: pointer;
+                &:hover{
+                    background-color: $secondary-color;
+                }
+            }
         }
     }
 }
@@ -316,8 +330,21 @@ transform: translate(0%, 50%);
     margin: 0 30px 30px 30px;
 
     .note-p {
-       
+       font-size: 1.2rem;
        word-wrap: break-word;
+    }
+    #deleteNote {
+        float: inline-end;
+        margin-right: 80px;
+        background-color: $primary-color;
+        box-shadow: 0px 0px 5px 1px $secondary-color;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        cursor: pointer;
+        &:hover{
+            background-color: $secondary-color;
+        }
     }
     }
 }
@@ -400,4 +427,32 @@ animation: shaking 2s infinite;
         50% { transform: rotate(0deg); };
         75% { transform: rotate(-3deg); };
         100% { transform: rotate(0deg); };
+}
+
+
+
+
+@media screen and (max-width: 768px) {
+    html {
+        position: fixed;
+    }
+    #menu-body {
+
+        max-height: 5vh;
+width: 100vw;
+        left: 20%;
+        top: 0%;
+        transform: translate(0 , 0);
+        &:hover{
+            transform:none !important;
+
+        }
+        #main-menu {
+            width: 100%;
+            max-height: 5vh;
+            border-radius: 0 0 20px 20px;
+            flex-direction: row;
+            justify-content: space-around;
+        }
+    }
 }

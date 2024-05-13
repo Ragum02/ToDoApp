@@ -3,7 +3,8 @@
 
 document.addEventListener("DOMContentLoaded", () => {
     const loadTasks = () => {
-        const taskData = JSON.parse(localStorage.getItem("data")) || [];
+        let taskData = JSON.parse(localStorage.getItem("data")) || [];
+        taskDate = sortDate(taskData);
         updateTaskContainer(taskData);
         updateTaskListButton(taskData.length);
     };
@@ -17,6 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const menuBody = document.getElementById("menu-body")
     menuBody.style.visibility = "visible";
     });
+
 
 //Main menu ****************************************************************************************************************************************************************************
 
@@ -129,25 +131,24 @@ const addTask = () => {
 localStorage.setItem("data", JSON.stringify(taskData));
 updateTaskListButton(taskData.length);
 updateTaskContainer();
-const selectedDate = new Date(); 
-const day = selectedDate.getDate(); 
-const currMonth = selectedDate.getMonth();
-
 reset();
+
 };
 
 const updateTaskContainer = () => {
     taskContainer.innerHTML = "";
 
     taskData.forEach(({id, date}) => {
+        const formattedDate = new Date(date).toLocaleDateString();
         (taskContainer.innerHTML += `<div class="task" id="${id}">
-        <p><strong>Date:</strong> ${date}</p>
-        <p><strong>${id}</strong></p>
-        <button onclick="deleteTask(this)" type="button" class="btn">X</button>
+        <p><strong>Date:</strong> ${formattedDate} <br>
+        <strong>${id}</strong>        <button id="deleteTask" onclick="deleteTask(this)" type="button" class="btn">X</button></p>
+
         </div>`
         )
     }
 );
+
 };
 
 const updateTaskListButton = (numberOfTasks) => {
@@ -168,6 +169,14 @@ const reset = () => {
     currentTask = {};
 }
 
+const sortDate = () => {
+    taskData.sort((a, b) => {
+        const dateA = new Date(a.date);
+        const dateB = new Date(b.date);
+        return dateA.getTime() - dateB.getTime();
+    });
+};
+
 addTaskBtn.addEventListener("click", (e) => {
     e.preventDefault();
 
@@ -177,8 +186,9 @@ addTaskBtn.addEventListener("click", (e) => {
 
     }
 
+  
     addTask();
-
+    sortDate();
 });
 
 // Notes ***********************************************************************************************************************************************
@@ -211,7 +221,7 @@ const updateNoteDisplay = () => {
     noteData.forEach(({id}) => {
         (noteDisplay.innerHTML += `<div class="note" id="${id}">
         <p class="note-p">${id}</p>
-        <button onclick="deleteNote(this)" type="button" class="btn">X</button>
+        <button id="deleteNote" onclick="deleteNote(this)" type="button" class="btn">X</button>
         </div>`
         )
     }
