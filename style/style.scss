@@ -467,7 +467,7 @@ display: none;
 
 
 #taskslist-body {
-
+    overflow: hidden;
     top: 0%;
     transform: translate(5%,10%)!important;
     height: 80vh;
@@ -506,6 +506,10 @@ display: none;
      }
     #taskslist-title {   
         transform: translate(0);
+    }
+    #taskslist-entry {
+        overflow: scroll;
+        height: 50%;
     }
 
 }

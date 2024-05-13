@@ -420,6 +420,7 @@ footer a:hover {
     display: none;
   }
   #taskslist-body {
+    overflow: hidden;
     top: 0%;
     transform: translate(5%, 10%) !important;
     height: 80vh;
@@ -444,6 +445,10 @@ footer a:hover {
   }
   #taskslist-body #taskslist-title {
     transform: translate(0);
+  }
+  #taskslist-body #taskslist-entry {
+    overflow: scroll;
+    height: 50%;
   }
   #notes-body {
     top: 0%;
