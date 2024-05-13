@@ -159,7 +159,7 @@ const updateTaskContainer = () => {
 const updateTaskListButton = (numberOfTasks) => {
     const taskListButton = document.getElementById("tasks-list");
     const tasksCount = numberOfTasks === undefined ? 0 : numberOfTasks;
-    taskListButton.innerHTML = `Tasks lists  <br> <center>${tasksCount}`};
+    taskListButton.innerHTML = `Task list  <br> <center>${tasksCount}`};
 
 const deleteTask = (buttonEl) => {
     const dataArrIndex = taskData.findIndex((item) => item.id === buttonEl.parentElement.id);
